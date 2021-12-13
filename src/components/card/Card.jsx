@@ -7,7 +7,7 @@ export default function Card({ item }) {
 
   return (
     <>
-      <Link style={{ textDecoration: "none" }} to={String(id)}>
+      <Link style={{ textDecoration: "none" }} to={`profile/${String(id)}`}>
         <div className="card" key={item}>
           <div>
             <img src={imageUrl} alt="" className="card__image" />
