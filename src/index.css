@@ -69,18 +69,22 @@
   justify-content: space-between;
   width: 100%;
 }
+
 .left-info {
   margin-left: 20px;
   width: 100%;
   padding: 10px;
 }
+
 .right-info {
   padding: 10px;
 }
+
 .left-info span,
 .right-info span {
   text-decoration: underline;
 }
+
 .breadcrumbs {
   padding: 20px;
 }
@@ -90,6 +94,7 @@
     flex-direction: column;
     align-items: unset;
   }
+
   .left-info {
     margin-left: 0;
     width: auto;

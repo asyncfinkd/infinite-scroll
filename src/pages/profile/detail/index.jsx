@@ -6,6 +6,7 @@ export default function ProfileDetailPages() {
   let params = useParams();
   const { data } = useProfile(params.id);
 
+  const { prefix, name, lastName, title, email, ip, jobArea, jobType } = data;
   return (
     <>
       <div class="profile__container">
@@ -19,31 +20,31 @@ export default function ProfileDetailPages() {
               <legend>Info</legend>
               <div>
                 <strong>
-                  {data.prefix} {data.name} {data.lastName}
+                  {prefix} {name} {lastName}
                 </strong>
               </div>
               <div>
-                <i>{data.title}</i>
+                <i>{title}</i>
               </div>{" "}
               <br />
               <div>
-                <span>Email</span>: {data.email}
+                <span>Email</span>: {email}
               </div>
               <div>
-                <span>Ip Address</span>: {data.ip}
+                <span>Ip Address</span>: {ip}
               </div>
               <div>
-                <span>Job Area</span>: {data.jobArea}
+                <span>Job Area</span>: {jobArea}
               </div>
               <div>
-                <span>Job Type</span>: {data.jobType}
+                <span>Job Type</span>: {jobType}
               </div>
             </fieldset>
             <fieldset class="right-info" style={{ marginLeft: "5px" }}>
               <legend>Address</legend>
               <div>
                 <strong>
-                  {data?.company?.name} {data?.company?.suffix}
+                  {data?.company?.name} {data?.company?.name}
                 </strong>
               </div>
               <div>
