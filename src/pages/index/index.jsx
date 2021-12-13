@@ -1,6 +1,8 @@
 import useFeed from "api/feed";
 import Card from "components/card/Card";
 import React, { useState, useRef, useCallback } from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { override } from "styles/spinner";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -39,7 +41,12 @@ function App() {
           }
         })}
       </div>
-      <div>{loading && "Loading..."}</div>
+      <ScaleLoader
+        color={"lightgray"}
+        loading={loading}
+        css={override}
+        size={150}
+      />
     </>
   );
 }
