@@ -45,7 +45,7 @@ export function useProfile(query, feedQuery, pageNumber, listPage) {
         toast.error("Server Error");
       });
     return () => cancel();
-  }, [query, listPage, pageNumber]);
+  }, [feedQuery, listPage, pageNumber]);
 
   return { data, loading, friendsFeed, hasMore };
 }

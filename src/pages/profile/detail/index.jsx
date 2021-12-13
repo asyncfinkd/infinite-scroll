@@ -1,15 +1,18 @@
 import { useProfile } from "api/profile";
-import React, { useCallback, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import ProfileCard from "components/card/ProfileCard";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { override } from "styles/spinner";
 
 export default function ProfileDetailPages() {
+  let pathname = useLocation();
   let params = useParams();
 
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [listPage, setListPage] = useState(20);
+
   const { data, friendsFeed, loading, hasMore } = useProfile(
     params.id,
     query,
@@ -31,6 +34,10 @@ export default function ProfileDetailPages() {
     },
     [loading, hasMore]
   );
+
+  useEffect(() => {
+    setPageNumber(0);
+  }, [pathname]);
 
   const { prefix, name, lastName, title, email, ip, jobArea, jobType } = data;
   return (
@@ -105,22 +112,7 @@ export default function ProfileDetailPages() {
                   } else {
                     return (
                       <>
-                        <div class="list-item">
-                          <div class="list-item-content">
-                            <img
-                              src="http://placeimg.com/640/480/animals?v=3"
-                              alt="Sonya Keeling"
-                            />
-                            <div class="list-item-content-description">
-                              <strong>
-                                {item.prefix} {item.name} {item.lastName}
-                              </strong>
-                            </div>
-                            <div class="list-item-content-description">
-                              {item.title}
-                            </div>
-                          </div>
-                        </div>
+                        <ProfileCard item={item} />
                       </>
                     );
                   }
