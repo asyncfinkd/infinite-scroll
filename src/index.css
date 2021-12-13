@@ -72,8 +72,10 @@
 .left-info {
   margin-left: 20px;
   width: 100%;
+  padding: 10px;
 }
 .right-info {
+  padding: 10px;
 }
 .left-info span,
 .right-info span {

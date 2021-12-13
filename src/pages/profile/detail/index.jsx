@@ -8,7 +8,7 @@ export default function ProfileDetailPages() {
 
   return (
     <>
-      <div class="container">
+      <div class="profile__container">
         <div class="header-wrapper">
           <div class="header">
             <img
@@ -23,44 +23,43 @@ export default function ProfileDetailPages() {
                 </strong>
               </div>
               <div>
-                <i>Customer Division Facilitator</i>
+                <i>{data.title}</i>
               </div>{" "}
               <br />
               <div>
-                <span>Email</span>: Adriana87@hotmail.com
+                <span>Email</span>: {data.email}
               </div>
               <div>
-                <span>Ip Address</span>: 205.44.63.69
+                <span>Ip Address</span>: {data.ip}
               </div>
               <div>
-                <span>Ip Address</span>: 205.44.63.69
+                <span>Job Area</span>: {data.jobArea}
               </div>
               <div>
-                <span>Job Area</span>: Metrics
-              </div>
-              <div>
-                <span>Job Type</span>: Facilitator
+                <span>Job Type</span>: {data.jobType}
               </div>
             </fieldset>
-            <fieldset class="right-info">
+            <fieldset class="right-info" style={{ marginLeft: "5px" }}>
               <legend>Address</legend>
               <div>
-                <strong>Feest Inc LLC</strong>
+                <strong>
+                  {data?.company?.name} {data?.company?.suffix}
+                </strong>
               </div>
               <div>
-                <span>City</span>: Lake Dewayneshire
+                <span>City</span>: {data?.address?.city}
               </div>
               <div>
-                <span>Country</span>: Lao People's Democratic Republic
+                <span>Country</span>: {data?.address?.country}
               </div>
               <div>
-                <span>State</span>: Alaska
+                <span>State</span>: {data?.address?.state}
               </div>
               <div>
-                <span>Street Address</span>: 218 Hilll Viaduct
+                <span>Street Address</span>: {data?.address?.streetAddress}
               </div>
               <div>
-                <span>ZIP</span>: 64894
+                <span>ZIP</span>: {data?.address?.zipCode}
               </div>
             </fieldset>
           </div>{" "}
