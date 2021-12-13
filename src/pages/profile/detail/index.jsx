@@ -63,7 +63,29 @@ export default function ProfileDetailPages() {
                 <span>ZIP</span>: {data?.address?.zipCode}
               </div>
             </fieldset>
-          </div>{" "}
+          </div>
+          <div>
+            <div class="breadcrumbs"></div>
+            <h2 style={{ marginLeft: "10px" }}>Friends:</h2>
+            <div class="users">
+              <div class="list">
+                <div class="list-item">
+                  <div class="list-item-content">
+                    <img
+                      src="http://placeimg.com/640/480/animals?v=3"
+                      alt="Sonya Keeling"
+                    />
+                    <div class="list-item-content-description">
+                      <strong>Miss Sonya Keeling</strong>
+                    </div>
+                    <div class="list-item-content-description">
+                      Legacy Creative Agent
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -13,7 +13,6 @@ export function useFeed(query, pageNumber, listPage) {
 
   useEffect(() => {
     setLoading(true);
-    console.log(pageNumber);
     let cancel;
     axios({
       method: "GET",
