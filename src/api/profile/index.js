@@ -9,7 +9,7 @@ export function useProfile(query) {
       method: "GET",
       url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${query}`,
     }).then((result) => {
-      console.log(result.data);
+      setData(result.data);
     });
   }, [query]);
 
