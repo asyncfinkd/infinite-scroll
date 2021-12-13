@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 export default function useFeed(query, pageNumber) {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [feed, setFeed] = useState([]);
   const [hasMore, setHasMore] = useState(false);
 
@@ -14,7 +13,6 @@ export default function useFeed(query, pageNumber) {
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
     let cancel;
     axios({
       method: "GET",
@@ -28,11 +26,10 @@ export default function useFeed(query, pageNumber) {
       })
       .catch((e) => {
         if (axios.isCancel(e)) return;
-        setError(true);
         toast.error("Server Error");
       });
     return () => cancel();
   }, [query, pageNumber]);
 
-  return { loading, error, feed, hasMore };
+  return { loading, feed, hasMore };
 }

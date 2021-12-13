@@ -5,7 +5,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(40);
 
-  const { feed, hasMore, loading, error } = useFeed(query, pageNumber);
+  const { feed, hasMore, loading } = useFeed(query, pageNumber);
 
   const observer = useRef();
   const lastFeedElementRef = useCallback(
@@ -56,7 +56,6 @@ function App() {
         })}
       </div>
       <div>{loading && "Loading..."}</div>
-      <div>{error && "Error"}</div>
     </>
   );
 }
