@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export function useProfile(query, feedQuery, listPage, pageNumber) {
+export function useProfile(query, feedQuery, pageNumber, listPage) {
   const [data, setData] = useState([]);
   const [friendsFeed, setFriendsFeed] = useState([]);
   const [hasMore, setHasMore] = useState(false);
@@ -26,7 +26,7 @@ export function useProfile(query, feedQuery, listPage, pageNumber) {
     let cancel;
     axios({
       method: "GET",
-      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${pageNumber}/${listPage}`,
+      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${query}/friends/${pageNumber}/${listPage}`,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {

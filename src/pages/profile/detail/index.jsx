@@ -1,10 +1,36 @@
 import { useProfile } from "api/profile";
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { override } from "styles/spinner";
 
 export default function ProfileDetailPages() {
   let params = useParams();
-  const { data } = useProfile(params.id);
+
+  const [query, setQuery] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
+  const [listPage, setListPage] = useState(20);
+  const { data, friendsFeed, loading, hasMore } = useProfile(
+    params.id,
+    query,
+    pageNumber,
+    listPage
+  );
+
+  const observer = useRef();
+  const lastFeedElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPageNumber((prevPageNumber) => prevPageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
 
   const { prefix, name, lastName, title, email, ip, jobArea, jobType } = data;
   return (
@@ -69,20 +95,42 @@ export default function ProfileDetailPages() {
             <h2 style={{ marginLeft: "10px" }}>Friends:</h2>
             <div class="users">
               <div class="list">
-                <div class="list-item">
-                  <div class="list-item-content">
-                    <img
-                      src="http://placeimg.com/640/480/animals?v=3"
-                      alt="Sonya Keeling"
-                    />
-                    <div class="list-item-content-description">
-                      <strong>Miss Sonya Keeling</strong>
-                    </div>
-                    <div class="list-item-content-description">
-                      Legacy Creative Agent
-                    </div>
-                  </div>
-                </div>
+                {friendsFeed.map((item, index) => {
+                  if (friendsFeed.length === index + 1) {
+                    return (
+                      <>
+                        <div key={item} ref={lastFeedElementRef}></div>
+                      </>
+                    );
+                  } else {
+                    return (
+                      <>
+                        <div class="list-item">
+                          <div class="list-item-content">
+                            <img
+                              src="http://placeimg.com/640/480/animals?v=3"
+                              alt="Sonya Keeling"
+                            />
+                            <div class="list-item-content-description">
+                              <strong>
+                                {item.prefix} {item.name} {item.lastName}
+                              </strong>
+                            </div>
+                            <div class="list-item-content-description">
+                              {item.title}
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    );
+                  }
+                })}
+                <ScaleLoader
+                  color={"lightgray"}
+                  loading={loading}
+                  css={override}
+                  size={150}
+                />
               </div>
             </div>
           </div>
