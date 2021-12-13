@@ -1,4 +1,4 @@
-import useFeed from "api/feed";
+import { useFeed } from "api/feed";
 import Card from "components/card/Card";
 import React, { useState, useRef, useCallback } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";

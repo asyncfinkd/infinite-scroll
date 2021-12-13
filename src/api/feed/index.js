@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export default function useFeed(query, pageNumber, listPage) {
+export function useFeed(query, pageNumber, listPage) {
   const [loading, setLoading] = useState(true);
   const [feed, setFeed] = useState([]);
   const [hasMore, setHasMore] = useState(false);
