@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export default function useFeed(query, pageNumber) {
+export default function useFeed(query, pageNumber, listPage) {
   const [loading, setLoading] = useState(true);
   const [feed, setFeed] = useState([]);
   const [hasMore, setHasMore] = useState(false);
@@ -13,14 +13,21 @@ export default function useFeed(query, pageNumber) {
 
   useEffect(() => {
     setLoading(true);
+    console.log(pageNumber);
     let cancel;
     axios({
       method: "GET",
-      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/0/${pageNumber}`,
+      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${pageNumber}/${listPage}`,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        setFeed(res.data.list);
+        if (feed.length > 0) {
+          res.data.list.map((item) => {
+            feed.push(item);
+          });
+        } else {
+          setFeed(res.data.list);
+        }
         setHasMore(res.data.list.length > 0);
         setLoading(false);
       })
@@ -29,7 +36,7 @@ export default function useFeed(query, pageNumber) {
         toast.error("Server Error");
       });
     return () => cancel();
-  }, [query, pageNumber]);
+  }, [query, listPage, pageNumber]);
 
   return { loading, feed, hasMore };
 }

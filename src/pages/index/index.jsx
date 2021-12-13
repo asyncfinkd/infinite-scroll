@@ -3,9 +3,10 @@ import React, { useState, useRef, useCallback } from "react";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(40);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [listPage, setListPage] = useState(20);
 
-  const { feed, hasMore, loading } = useFeed(query, pageNumber);
+  const { feed, hasMore, loading } = useFeed(query, pageNumber, listPage);
 
   const observer = useRef();
   const lastFeedElementRef = useCallback(
@@ -14,13 +15,14 @@ function App() {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          if (pageNumber !== 100) {
-            if (pageNumber === 80) {
-              setPageNumber((prevPageNumber) => prevPageNumber + 20);
-            } else {
-              setPageNumber((prevPageNumber) => prevPageNumber + 40);
-            }
-          }
+          // if (pageNumber !== 100) {
+          //   if (pageNumber === 80) {
+          //     setPageNumber((prevPageNumber) => prevPageNumber + 20);
+          //   } else {
+          //     setPageNumber((prevPageNumber) => prevPageNumber + 40);
+          //   }
+          // }
+          setPageNumber((prevPageNumber) => prevPageNumber + 1);
         }
       });
       if (node) observer.current.observe(node);
@@ -34,9 +36,9 @@ function App() {
         {feed.map((item, index) => {
           if (feed.length === index + 1) {
             return (
-              <div className="card" ref={lastFeedElementRef} key={item}>
-                {item.title}
-              </div>
+              <>
+                <div key={item} ref={lastFeedElementRef}></div>
+              </>
             );
           } else {
             return (
