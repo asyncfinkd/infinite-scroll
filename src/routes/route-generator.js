@@ -7,4 +7,9 @@ export const RoutesData = [
     path: routes.index,
     component: lazy(() => import("pages/index")),
   },
+  {
+    title: "ProfileDetail",
+    path: routes.profile,
+    component: lazy(() => import("pages/profile/detail")),
+  },
 ];

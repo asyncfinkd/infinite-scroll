@@ -1,4 +1,5 @@
 import useFeed from "api/feed";
+import Card from "components/card/Card";
 import React, { useState, useRef, useCallback } from "react";
 
 function App() {
@@ -15,13 +16,6 @@ function App() {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          // if (pageNumber !== 100) {
-          //   if (pageNumber === 80) {
-          //     setPageNumber((prevPageNumber) => prevPageNumber + 20);
-          //   } else {
-          //     setPageNumber((prevPageNumber) => prevPageNumber + 40);
-          //   }
-          // }
           setPageNumber((prevPageNumber) => prevPageNumber + 1);
         }
       });
@@ -41,19 +35,7 @@ function App() {
               </>
             );
           } else {
-            return (
-              <div className="card" key={item}>
-                <div>
-                  <img src={item.imageUrl} alt="" className="card__image" />
-                </div>
-                <div className="card__description">
-                  <div>
-                    {item.prefix} {item.name} {item.lastName}
-                  </div>
-                  <div>{item.title}</div>
-                </div>
-              </div>
-            );
+            return <Card item={item} />;
           }
         })}
       </div>
