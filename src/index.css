@@ -1,20 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  margin: 10px 0;
 }
 
 .card {
   width: 400px;
-  border: 1px solid red;
+  border: 1px solid lightgray;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px;
   cursor: pointer;
   color: black;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background-color: rgba(211, 211, 211, 0.336);
 }
 
 .card__image {
