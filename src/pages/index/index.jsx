@@ -8,7 +8,7 @@ function App() {
   const { feed, hasMore, loading, error } = useFeed(query, pageNumber);
 
   const observer = useRef();
-  const lastBookElementRef = useCallback(
+  const lastFeedElementRef = useCallback(
     (node) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
@@ -31,24 +31,24 @@ function App() {
   return (
     <>
       <div className="container">
-        {feed.map((book, index) => {
+        {feed.map((item, index) => {
           if (feed.length === index + 1) {
             return (
-              <div className="card" ref={lastBookElementRef} key={book}>
-                {book.title}
+              <div className="card" ref={lastFeedElementRef} key={item}>
+                {item.title}
               </div>
             );
           } else {
             return (
-              <div className="card" key={book}>
+              <div className="card" key={item}>
                 <div>
-                  <img src={book.imageUrl} alt="" className="card__image" />
+                  <img src={item.imageUrl} alt="" className="card__image" />
                 </div>
                 <div className="card__description">
                   <div>
-                    {book.prefix} {book.name} {book.lastName}
+                    {item.prefix} {item.name} {item.lastName}
                   </div>
-                  <div>{book.title}</div>
+                  <div>{item.title}</div>
                 </div>
               </div>
             );
