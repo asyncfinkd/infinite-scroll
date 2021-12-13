@@ -4,6 +4,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { RoutesData } from "routes/route-generator";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Pages = () => {
   return (
@@ -20,6 +22,7 @@ const Pages = () => {
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <ToastContainer />
       <Suspense fallback={false}>
         <Pages />
       </Suspense>

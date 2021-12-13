@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function useFeed(query, pageNumber) {
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,7 @@ export default function useFeed(query, pageNumber) {
       .catch((e) => {
         if (axios.isCancel(e)) return;
         setError(true);
+        toast.error("Server Error");
       });
     return () => cancel();
   }, [query, pageNumber]);
