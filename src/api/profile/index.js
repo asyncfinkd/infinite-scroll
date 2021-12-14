@@ -10,7 +10,7 @@ export function useProfile(query, feedQuery, pageNumber, listPage) {
 
   useEffect(() => {
     setFriendsFeed([]);
-  }, [feedQuery]);
+  }, [query]);
 
   useEffect(() => {
     axios({
@@ -30,13 +30,9 @@ export function useProfile(query, feedQuery, pageNumber, listPage) {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        if (friendsFeed.length > 0) {
-          res.data.list.map((item) => {
-            friendsFeed.push(item);
-          });
-        } else {
-          setFriendsFeed(res.data.list);
-        }
+        res.data.list.map((item) => {
+          friendsFeed.push(item);
+        });
         setHasMore(res.data.list.length > 0);
         setLoading(false);
       })
@@ -45,7 +41,7 @@ export function useProfile(query, feedQuery, pageNumber, listPage) {
         toast.error("Server Error");
       });
     return () => cancel();
-  }, [feedQuery, listPage, pageNumber]);
+  }, [feedQuery, pageNumber, listPage, friendsFeed]);
 
   return { data, loading, friendsFeed, hasMore };
 }

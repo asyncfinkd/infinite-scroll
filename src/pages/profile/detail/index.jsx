@@ -102,8 +102,8 @@ export default function ProfileDetailPages() {
             <h2 style={{ marginLeft: "10px" }}>Friends:</h2>
             <div class="users">
               <div class="list">
-                {friendsFeed.map((item, index) => {
-                  if (friendsFeed.length === index + 1) {
+                {friendsFeed?.map((item, index) => {
+                  if (friendsFeed?.length === index + 1) {
                     return (
                       <>
                         <div key={item} ref={lastFeedElementRef}></div>
