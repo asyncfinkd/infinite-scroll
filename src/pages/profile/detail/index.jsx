@@ -47,7 +47,7 @@ export default function ProfileDetailPages() {
           <div class="header">
             <img
               src="http://placeimg.com/640/480/animals?v=1"
-              alt="Angie Olson"
+              alt={`${name} ${lastName}`}
             />
             <fieldset class="left-info">
               <legend>Info</legend>

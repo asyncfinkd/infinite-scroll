@@ -3,24 +3,23 @@ import { Link } from "react-router-dom";
 import { String } from "shared/toString";
 
 export default function ProfileCard({ item }) {
+  const { id, name, lastName, prefix, title } = item;
+
   return (
     <>
       <div class="list-item">
-        <Link
-          style={{ textDecoration: "none" }}
-          to={`/profile/${String(item.id)}`}
-        >
+        <Link style={{ textDecoration: "none" }} to={`/profile/${String(id)}`}>
           <div class="list-item-content">
             <img
               src="http://placeimg.com/640/480/animals?v=3"
-              alt={`${item.name} ${item.lastName}`}
+              alt={`${name} ${lastName}`}
             />
             <div class="list-item-content-description">
               <strong>
-                {item.prefix} {item.name} {item.lastName}
+                {prefix} {name} {lastName}
               </strong>
             </div>
-            <div class="list-item-content-description">{item.title}</div>
+            <div class="list-item-content-description">{title}</div>
           </div>
         </Link>
       </div>
