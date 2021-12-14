@@ -1,15 +1,15 @@
-import lazy from "react-lazy-with-preload";
-import { routes } from "./routes";
+import lazy from 'react-lazy-with-preload';
+import { routes } from './routes';
 
 export const RoutesData = [
   {
-    title: "Index",
+    title: 'Index',
     path: routes.index,
-    component: lazy(() => import("pages/index")),
+    component: lazy(() => import('pages/index')),
   },
   {
-    title: "ProfileDetail",
+    title: 'ProfileDetail',
     path: routes.profile,
-    component: lazy(() => import("pages/profile/detail")),
+    component: lazy(() => import('pages/profile/detail')),
   },
 ];

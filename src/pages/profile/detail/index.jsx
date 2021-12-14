@@ -1,15 +1,15 @@
-import { useProfile } from "api/profile";
-import ProfileCard from "components/card/ProfileCard";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import ScaleLoader from "react-spinners/ScaleLoader";
-import { override } from "styles/spinner";
+import { useProfile } from 'api/profile';
+import ProfileCard from 'components/card/ProfileCard';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import ScaleLoader from 'react-spinners/ScaleLoader';
+import { override } from 'styles/spinner';
 
 export default function ProfileDetailPages() {
   let pathname = useLocation();
   let params = useParams();
 
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [listPage, setListPage] = useState(20);
 
@@ -17,7 +17,7 @@ export default function ProfileDetailPages() {
     params.id,
     query,
     pageNumber,
-    listPage
+    listPage,
   );
 
   const observer = useRef();
@@ -32,7 +32,7 @@ export default function ProfileDetailPages() {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore],
   );
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function ProfileDetailPages() {
               </div>
               <div>
                 <i>{title}</i>
-              </div>{" "}
+              </div>{' '}
               <br />
               <div>
                 <span>Email</span>: {email}
@@ -73,7 +73,7 @@ export default function ProfileDetailPages() {
                 <span>Job Type</span>: {jobType}
               </div>
             </fieldset>
-            <fieldset class="right-info" style={{ marginLeft: "5px" }}>
+            <fieldset class="right-info" style={{ marginLeft: '5px' }}>
               <legend>Address</legend>
               <div>
                 <strong>
@@ -99,7 +99,7 @@ export default function ProfileDetailPages() {
           </div>
           <div>
             <div class="breadcrumbs"></div>
-            <h2 style={{ marginLeft: "10px" }}>Friends:</h2>
+            <h2 style={{ marginLeft: '10px' }}>Friends:</h2>
             <div class="users">
               <div class="list">
                 {friendsFeed?.map((item, index) => {
@@ -118,7 +118,7 @@ export default function ProfileDetailPages() {
                   }
                 })}
                 <ScaleLoader
-                  color={"lightgray"}
+                  color={'lightgray'}
                   loading={loading}
                   css={override}
                   size={150}

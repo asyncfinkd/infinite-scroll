@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export function useFeed(query, pageNumber, listPage) {
   const [loading, setLoading] = useState(true);
@@ -15,7 +15,7 @@ export function useFeed(query, pageNumber, listPage) {
     setLoading(true);
     let cancel;
     axios({
-      method: "GET",
+      method: 'GET',
       url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${pageNumber}/${listPage}`,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
@@ -32,7 +32,7 @@ export function useFeed(query, pageNumber, listPage) {
       })
       .catch((e) => {
         if (axios.isCancel(e)) return;
-        toast.error("Server Error");
+        toast.error('Server Error');
       });
     return () => cancel();
   }, [query, listPage, pageNumber]);

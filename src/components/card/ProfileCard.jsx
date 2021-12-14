@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { String } from "shared/toString";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { String } from 'shared/toString';
 
 export default function ProfileCard({ item }) {
   const { id, name, lastName, prefix, title } = item;
@@ -8,7 +8,7 @@ export default function ProfileCard({ item }) {
   return (
     <>
       <div class="list-item">
-        <Link style={{ textDecoration: "none" }} to={`/profile/${String(id)}`}>
+        <Link style={{ textDecoration: 'none' }} to={`/profile/${String(id)}`}>
           <div class="list-item-content">
             <img
               src="http://placeimg.com/640/480/animals?v=3"

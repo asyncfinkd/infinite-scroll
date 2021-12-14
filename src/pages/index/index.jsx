@@ -1,11 +1,11 @@
-import { useFeed } from "api/feed";
-import Card from "components/card/Card";
-import React, { useState, useRef, useCallback } from "react";
-import ScaleLoader from "react-spinners/ScaleLoader";
-import { override } from "styles/spinner";
+import { useFeed } from 'api/feed';
+import Card from 'components/card/Card';
+import React, { useState, useRef, useCallback } from 'react';
+import ScaleLoader from 'react-spinners/ScaleLoader';
+import { override } from 'styles/spinner';
 
 function App() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [listPage, setListPage] = useState(20);
 
@@ -23,7 +23,7 @@ function App() {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore],
   );
 
   return (
@@ -42,7 +42,7 @@ function App() {
         })}
       </div>
       <ScaleLoader
-        color={"lightgray"}
+        color={'lightgray'}
         loading={loading}
         css={override}
         size={150}

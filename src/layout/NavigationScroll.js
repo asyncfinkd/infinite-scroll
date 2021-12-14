@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const NavigationScroll = ({ children }) => {
   const location = useLocation();
@@ -10,7 +10,7 @@ const NavigationScroll = ({ children }) => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, [pathname]);
 
