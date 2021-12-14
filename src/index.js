@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -7,6 +7,21 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavigationScroll from 'layout/NavigationScroll';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+
+const LazyLoad = () => {
+  useEffect(() => {
+    NProgress.configure({ showSpinner: false });
+    NProgress.start();
+
+    return () => {
+      NProgress.done();
+    };
+  });
+
+  return '';
+};
 
 const Pages = () => {
   return (
@@ -26,7 +41,7 @@ ReactDOM.render(
     <BrowserRouter>
       <NavigationScroll>
         <ToastContainer />
-        <Suspense fallback={false}>
+        <Suspense fallback={<LazyLoad />}>
           <Pages />
         </Suspense>
       </NavigationScroll>
