@@ -13,7 +13,7 @@ export default function ProfileCard({ item }) {
           <div class="list-item-content">
             <img
               src="http://placeimg.com/640/480/animals?v=3"
-              alt="Sonya Keeling"
+              alt={`${item.name} ${item.lastName}`}
             />
             <div class="list-item-content-description">
               <strong>
