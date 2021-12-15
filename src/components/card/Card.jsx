@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { String } from 'shared/toString';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { String } from 'shared/toString'
 
 export default function Card({ item }) {
-  const { prefix, name, lastName, id, imageUrl, title } = item;
+  const { prefix, name, lastName, id, imageUrl, title } = item
 
   return (
     <>
@@ -21,5 +21,5 @@ export default function Card({ item }) {
         </div>
       </Link>
     </>
-  );
+  )
 }

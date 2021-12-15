@@ -1,1 +1,1 @@
-export const String = (x) => x.toString();
+export const String = (x) => x.toString()

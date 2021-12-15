@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { String } from 'shared/toString';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { String } from 'shared/toString'
 
 export default function ProfileCard({ item }) {
-  const { id, name, lastName, prefix, title } = item;
+  const { id, name, lastName, prefix, title } = item
 
   return (
     <>
@@ -24,5 +24,5 @@ export default function ProfileCard({ item }) {
         </Link>
       </div>
     </>
-  );
+  )
 }

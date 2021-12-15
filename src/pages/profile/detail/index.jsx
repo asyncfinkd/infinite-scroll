@@ -1,45 +1,45 @@
-import { useProfile } from 'api/profile';
-import ProfileCard from 'components/card/ProfileCard';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import ScaleLoader from 'react-spinners/ScaleLoader';
-import { override } from 'styles/spinner';
+import { useProfile } from 'api/profile'
+import ProfileCard from 'components/card/ProfileCard'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
+import ScaleLoader from 'react-spinners/ScaleLoader'
+import { override } from 'styles/spinner'
 
 export default function ProfileDetailPages() {
-  let pathname = useLocation();
-  let params = useParams();
+  let pathname = useLocation()
+  let params = useParams()
 
-  const [query, setQuery] = useState('');
-  const [pageNumber, setPageNumber] = useState(1);
-  const [listPage, setListPage] = useState(20);
+  const [query, setQuery] = useState('')
+  const [pageNumber, setPageNumber] = useState(1)
+  const [listPage, setListPage] = useState(20)
 
   const { data, friendsFeed, loading, hasMore } = useProfile(
     params.id,
     query,
     pageNumber,
     listPage,
-  );
+  )
 
-  const observer = useRef();
+  const observer = useRef()
   const lastFeedElementRef = useCallback(
     (node) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
+      if (loading) return
+      if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          setPageNumber((prevPageNumber) => prevPageNumber + 1);
+          setPageNumber((prevPageNumber) => prevPageNumber + 1)
         }
-      });
-      if (node) observer.current.observe(node);
+      })
+      if (node) observer.current.observe(node)
     },
     [loading, hasMore],
-  );
+  )
 
   useEffect(() => {
-    setPageNumber(0);
-  }, [pathname]);
+    setPageNumber(0)
+  }, [pathname])
 
-  const { prefix, name, lastName, title, email, ip, jobArea, jobType } = data;
+  const { prefix, name, lastName, title, email, ip, jobArea, jobType } = data
   return (
     <>
       <div class="profile__container">
@@ -108,13 +108,13 @@ export default function ProfileDetailPages() {
                       <>
                         <div key={item} ref={lastFeedElementRef}></div>
                       </>
-                    );
+                    )
                   } else {
                     return (
                       <>
                         <ProfileCard item={item} />
                       </>
-                    );
+                    )
                   }
                 })}
                 <ScaleLoader
@@ -129,5 +129,5 @@ export default function ProfileDetailPages() {
         </div>
       </div>
     </>
-  );
+  )
 }

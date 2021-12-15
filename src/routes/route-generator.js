@@ -1,5 +1,5 @@
-import lazy from 'react-lazy-with-preload';
-import { routes } from './routes';
+import lazy from 'react-lazy-with-preload'
+import { routes } from './routes'
 
 export const RoutesData = [
   {
@@ -12,4 +12,4 @@ export const RoutesData = [
     path: routes.profile,
     component: lazy(() => import('pages/profile/detail')),
   },
-];
+]
