@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
 export const ValidateSSL = ({ children }) => {
   const [val, setVal] = useState(null)
@@ -12,4 +13,8 @@ export const ValidateSSL = ({ children }) => {
   })
 
   return val
+}
+
+ValidateSSL.propTypes = {
+  children: PropTypes.any,
 }
