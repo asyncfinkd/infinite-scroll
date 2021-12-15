@@ -16,5 +16,5 @@ export const ValidateSSL = ({ children }) => {
 }
 
 ValidateSSL.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
 }
