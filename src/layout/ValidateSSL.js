@@ -1,11 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export const ValidateSSL = ({ children }) => {
+  const [val, setVal] = useState(null)
+
   useEffect(() => {
     if (window.location.protocol != 'http:') {
-      return null
+      setVal(null)
+    } else {
+      setVal(children)
     }
   })
 
-  return children
+  return val
 }
