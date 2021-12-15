@@ -114,7 +114,7 @@ export default function ProfileDetailPages() {
                     <Link to={`/profile/${item.id}`}>
                       {item.prefix} {item.name} {item.lastName}
                     </Link>
-                    {`${i != contextValue.length - 1 ? ' > ' : '  '}`}
+                    {`${i != contextValue.length - 1 ? ' > ' : ''}`}
                   </>
                 )
               })}
