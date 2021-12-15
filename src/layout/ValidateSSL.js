@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { toast } from 'react-toastify'
 
 export const ValidateSSL = ({ children }) => {
   const [val, setVal] = useState(null)
 
   useEffect(() => {
     if (window.location.protocol != 'http:') {
-      setVal(null)
+      toast.warning('This website work only http protocol!')
     } else {
       setVal(children)
     }
