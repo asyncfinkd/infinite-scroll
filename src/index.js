@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
@@ -10,6 +10,7 @@ import NavigationScroll from 'layout/NavigationScroll'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { ValidateSSL } from 'layout/ValidateSSL'
+import { ApplicationContext } from 'context/ApplicationContext'
 
 const LazyLoad = () => {
   useEffect(() => {
@@ -25,13 +26,19 @@ const LazyLoad = () => {
 }
 
 const Pages = () => {
+  const [contextValue, setContextValue] = useState([])
+
   return (
-    <Routes>
-      {RoutesData.map((el) => {
-        return <Route key={el.path} path={el.path} element={<el.component />} />
-      })}
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <ApplicationContext.Provider value={{ contextValue, setContextValue }}>
+      <Routes>
+        {RoutesData.map((el) => {
+          return (
+            <Route key={el.path} path={el.path} element={<el.component />} />
+          )
+        })}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </ApplicationContext.Provider>
   )
 }
 
