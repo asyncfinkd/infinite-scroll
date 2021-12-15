@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import NavigationScroll from 'layout/NavigationScroll';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import { ValidateSSL } from 'layout/ValidateSSL';
 
 const LazyLoad = () => {
   useEffect(() => {
@@ -41,9 +42,11 @@ ReactDOM.render(
     <BrowserRouter>
       <NavigationScroll>
         <ToastContainer />
-        <Suspense fallback={<LazyLoad />}>
-          <Pages />
-        </Suspense>
+        <ValidateSSL>
+          <Suspense fallback={<LazyLoad />}>
+            <Pages />
+          </Suspense>
+        </ValidateSSL>
       </NavigationScroll>
     </BrowserRouter>
   </React.StrictMode>,
