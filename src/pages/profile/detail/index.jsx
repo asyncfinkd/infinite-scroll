@@ -1,13 +1,22 @@
 import { useProfile } from 'api/profile'
 import ProfileCard from 'components/card/ProfileCard'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { ApplicationContext } from 'context/ApplicationContext'
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import ScaleLoader from 'react-spinners/ScaleLoader'
 import { override } from 'styles/spinner'
 
 export default function ProfileDetailPages() {
   let pathname = useLocation()
   let params = useParams()
+
+  const { contextValue } = useContext(ApplicationContext)
 
   const [query, setQuery] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
@@ -98,7 +107,18 @@ export default function ProfileDetailPages() {
             </fieldset>
           </div>
           <div>
-            <div class="breadcrumbs"></div>
+            <div class="breadcrumbs">
+              {contextValue.map((item, i) => {
+                return (
+                  <>
+                    <Link to={`/profile/${item.id}`}>
+                      {item.prefix} {item.name} {item.lastName}
+                    </Link>
+                    {`${i != contextValue.length - 1 ? ' > ' : '  '}`}
+                  </>
+                )
+              })}
+            </div>
             <h2 style={{ marginLeft: '10px' }}>Friends:</h2>
             <div class="users">
               <div class="list">
