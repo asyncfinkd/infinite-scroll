@@ -37,7 +37,7 @@ function App() {
               </>
             )
           } else {
-            return <Card item={item} />
+            return <Card item={item} index={index} />
           }
         })}
       </div>
