@@ -132,7 +132,7 @@ export default function ProfileDetailPages() {
                   } else {
                     return (
                       <>
-                        <ProfileCard item={item} />
+                        <ProfileCard index={index} item={item} />
                       </>
                     )
                   }
