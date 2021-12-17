@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import env from 'constants/environment/env.json'
 
 export function useFeed(query, pageNumber, listPage) {
   const [loading, setLoading] = useState(true)
@@ -16,7 +17,7 @@ export function useFeed(query, pageNumber, listPage) {
     let cancel
     axios({
       method: 'GET',
-      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${pageNumber}/${listPage}`,
+      url: `${env.SERVER_URL}/user/${pageNumber}/${listPage}`,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {

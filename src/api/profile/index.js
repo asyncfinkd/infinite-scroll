@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import env from 'constants/environment/env.json'
 
 export function useProfile(query, feedQuery, pageNumber, listPage) {
   const [data, setData] = useState([])
@@ -15,7 +16,7 @@ export function useProfile(query, feedQuery, pageNumber, listPage) {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${query}`,
+      url: `${env.SERVER_URL}/user/${query}`,
     }).then((result) => {
       setData(result.data)
     })
@@ -26,7 +27,7 @@ export function useProfile(query, feedQuery, pageNumber, listPage) {
     let cancel
     axios({
       method: 'GET',
-      url: `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${query}/friends/${pageNumber}/${listPage}`,
+      url: `${env.SERVER_URL}/user/${query}/friends/${pageNumber}/${listPage}`,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
