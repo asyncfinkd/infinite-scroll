@@ -6,5 +6,5 @@ export const Image = (props) => {
 }
 
 Image.propTypes = {
-  source: PropTypes.string,
+  props: PropTypes.any,
 }
