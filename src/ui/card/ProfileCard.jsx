@@ -1,3 +1,4 @@
+import { Image } from 'components/image/Image'
 import { ApplicationContext } from 'context/ApplicationContext'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
@@ -18,7 +19,7 @@ export default function ProfileCard({ item, index }) {
       >
         <Link style={{ textDecoration: 'none' }} to={`/profile/${String(id)}`}>
           <div class="list-item-content">
-            <img
+            <Image
               src={`http://placeimg.com/640/480/animals?=${index}`}
               alt={`${name} ${lastName}`}
             />

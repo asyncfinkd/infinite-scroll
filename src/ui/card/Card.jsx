@@ -1,3 +1,4 @@
+import { Image } from 'components/image/Image'
 import { ApplicationContext } from 'context/ApplicationContext'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
@@ -19,7 +20,7 @@ export default function Card({ item, index }) {
       >
         <div className="card" key={item}>
           <div>
-            <img
+            <Image
               src={`${imageUrl}?v=${index}`}
               alt=""
               className="card__image"
