@@ -1,3 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export const Image = () => {}
+export const Image = (props) => {
+  return <img {...props} />
+}
+
+Image.propTypes = {
+  source: PropTypes.string,
+}

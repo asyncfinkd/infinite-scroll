@@ -13,6 +13,7 @@ import React, {
 import { Link, useLocation, useParams } from 'react-router-dom'
 import ScaleLoader from 'react-spinners/ScaleLoader'
 import { override } from 'styles/spinner'
+import { Image } from 'components/image/Image'
 
 export default function ProfileDetailPages() {
   let pathname = useLocation()
@@ -56,7 +57,7 @@ export default function ProfileDetailPages() {
       <div class="profile__container">
         <div class="header-wrapper">
           <div class="header">
-            <img
+            <Image
               src="http://placeimg.com/640/480/animals?v=1"
               alt={`${name} ${lastName}`}
             />
