@@ -111,10 +111,10 @@ export default function ProfileDetailPages() {
               {contextValue.map((item, i) => {
                 return (
                   <>
+                    {i > 0 ? ' > ' : ''}
                     <Link to={`/profile/${item.id}`}>
                       {item.prefix} {item.name} {item.lastName}
                     </Link>
-                    {`${i != contextValue.length - 1 ? ' > ' : ''}`}
                   </>
                 )
               })}
