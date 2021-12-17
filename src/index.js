@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import { RoutesData } from 'routes/route-generator'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  HashRouter,
+} from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import NavigationScroll from 'layout/NavigationScroll'
@@ -44,16 +50,18 @@ const Pages = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <NavigationScroll>
-        <ToastContainer />
-        <ValidateSSL>
-          <Suspense fallback={<LazyLoad />}>
-            <Pages />
-          </Suspense>
-        </ValidateSSL>
-      </NavigationScroll>
-    </BrowserRouter>
+    <HashRouter>
+      <BrowserRouter>
+        <NavigationScroll>
+          <ToastContainer />
+          <ValidateSSL>
+            <Suspense fallback={<LazyLoad />}>
+              <Pages />
+            </Suspense>
+          </ValidateSSL>
+        </NavigationScroll>
+      </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 )
