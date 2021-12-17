@@ -1,5 +1,5 @@
 import { useProfile } from 'api/profile'
-import ProfileCard from 'components/card/ProfileCard'
+import ProfileCard from 'ui/card/ProfileCard'
 import { ApplicationContext } from 'context/ApplicationContext'
 import ProfileDetailAddressModule from 'modules/profile/detail/profile-detail-address'
 import ProfileDetailInfoModule from 'modules/profile/detail/profile-detail-info'

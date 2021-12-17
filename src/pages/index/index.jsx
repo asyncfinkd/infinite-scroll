@@ -1,5 +1,5 @@
 import { useFeed } from 'api/feed'
-import Card from 'components/card/Card'
+import Card from 'ui/card/Card'
 import React, { useState, useRef, useCallback } from 'react'
 import ScaleLoader from 'react-spinners/ScaleLoader'
 import { override } from 'styles/spinner'
