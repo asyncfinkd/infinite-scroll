@@ -15,13 +15,10 @@
 }
 
 .card {
-  width: 400px;
+  width: 300px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
+  height: 300px;
   cursor: pointer;
   color: black;
   transition: all 0.2s ease;
@@ -32,13 +29,13 @@
 }
 
 .card__image {
-  border-radius: 100%;
-  height: 60px;
+  height: 200px;
+  width: 100%;
   object-fit: cover;
 }
 
 .card__description {
-  text-align: right;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
